@@ -23,7 +23,6 @@ const Navbar = () => {
     setTitle(parsedTitle);
   }, [location]);
   const navigate = useNavigate();
-  console.log(title)
   return (
     <Grid container>
       <Drawer sx={navbarStyles.drawer} variant="permanent" anchor="left">
