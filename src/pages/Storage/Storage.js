@@ -1,7 +1,36 @@
-import React from 'react'
+import React, { useState } from "react";
+import GridWrapper from "../../components/common/GridWrapper/GridWrapper";
+import BasicSnackbar from "../../components/common/BasicSnackBar/BasicSnackBar";
+import CommonButton from "../../components/common/CommonButton/CommonButton";
 
 const Storage = () => {
-  return <div style={{ marginLeft: "500px" }}>this is storage</div>;
-}
+  const [open, setOpen] = useState(false);
 
-export default Storage
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  return (
+    <GridWrapper>
+      This is storage page.
+      <CommonButton variant="contained" onClick={handleClick}>
+        Open success snackbar
+      </CommonButton>
+      <BasicSnackbar
+        open={open}
+        onClose={handleClose}
+        severity="error"
+        message="Error msg"
+      />
+    </GridWrapper>
+  );
+};
+
+export default Storage;
