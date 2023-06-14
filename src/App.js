@@ -1,31 +1,28 @@
-import Button from "@mui/material/Button";
-import { useState } from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Authentication from "./pages/Authentication/Authentication";
+import MachineLearning from "./pages/MachineLearning/MachineLearning";
+import Hosting from "./pages/Hosting/Hosting";
+import Functions from "./pages/Functions/Functions";
+import Database from "./pages/Database/Database";
+import Storage from "./pages/Storage/Storage";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  const [color, setColor] = useState("primary");
-  const handelClick = () => {
-    setColor("secondary");
-  };
-
   return (
     <div className="App">
-      <h1>React MUI</h1>
-      {/* <button>Click Me</button> */}
-      {/* <Button color="secondary" variant="outlined">
-        Click ME!
-      </Button>
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button> */}
-      {/* <Button variant="contained" color={color} size="small" onClick={handelClick}>Outlined</Button> */}
-      <Button
-        variant="outlined"
-        color={color}
-        endIcon={<DeleteIcon />}
-        onClick={handelClick}
-      >
-        Click Me
-      </Button>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navbar />}>
+            <Route path="authentication" element={<Authentication />} />
+            <Route path="database" element={<Database />} />
+            <Route path="functions" element={<Functions />} />
+            <Route path="hosting" element={<Hosting />} />
+            <Route path="machine-learning" element={<MachineLearning />} />
+            <Route path="storage" element={<Storage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
